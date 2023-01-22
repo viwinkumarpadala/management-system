@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch OOPS_VehicleManagement",
+            "request": "launch",
+            "mainClass": "MainVehicleManagement.OOPS_VehicleManagement",
+            "projectName": "MiniProjectMain_7a454a04"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch OOPS_VehicleManagement",
+            "request": "launch",
+            "mainClass": "MainVehicleManagement.OOPS_VehicleManagement",
+            "projectName": "MiniProjectMain_589352b7"
+        }
+    ]
+}

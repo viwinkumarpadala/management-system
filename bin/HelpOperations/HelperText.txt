@@ -1,0 +1,120 @@
+Brief Information About Everything:
+
+Vehicle Management System:
+Every vehicle contains -> model price onroadInterest milege engineNumber dateofMan
+
+3 kinds of vehicles -> Bike, Car, auto
+
+table commands given:
+create table bike(Model varchar(50), Price double, onroadInterest double, milege double, engineNumber varchar(20) primary key, dateofMan DATE not null);
+create table car(Model varchar(50), Price double, onroadInterest double, milege double, engineNumber varchar(20) primary key, dateofMan DATE not null);
+create table auto(Model varchar(50), Price double, onroadInterest double, milege double, engineNumber varchar(20) primary key, dateofMan DATE not null);
+
+Note that engineNumber is the primary key.
+
+Let's go package by package in detail:
+
+1. ConnectionFactoryClass ->
+    Has only one file (ConnectionFactory) which has only method (giveNewConnection) which gives us a new connection between JAVA Code and DBMS DATABASE when called.
+2. FileHandler ->
+    This has all the required files which involes .csv operations (Read, Update, Delete and Create)
+3. HelpOperations ->
+    This class will have 2 files Help.java which has some of the utility functions and functions which can print the help of a certain action and HelperText.java which has a brief information about the functionality of the code.
+4. MainVehicleManagement ->
+    This is the main class which is linked to all the classes, and front end part is completely present in this OOPS_VehicleManagement.java file.
+5. Operations -> 
+    This class will contain all the operations which needs to be done in individual files which serves as a bridge to the (FileHandler <--> OOPS_VehicleManagement <--> VehicleDBMS)
+6. VehicleClass ->
+    Finally the Vehicle class has all the required classes and methods that work on the Vehicle Objects itself.
+
+Functionality of the code:
+
+Ther are 2 ways for each of CRUD Operation which are mentioned in detail here:
+
+1. Creation:
+    1. Command Line Manual Vehicle creation:
+    -create: -b for bike, -c for car and -a for auto followed by attributes:
+    model price onroadInterest milege engineNumber dateofMan
+
+    How does it work?
+    OOPS_VehicleManagement(Reads all the arguments) -> 
+    Operations.CreateVehicle(Directs to the appropriate Creation Method) -> 
+    VehicleDBMS.createVehicle(Add Vehicle to DBMS table) and AddtoFile.addtofile(Adds the vehicle to the .csv file)
+
+    2. CSV Vehicle creation:
+    Simply enter: -create -x (Takes from x.csv)
+
+    How does it work?
+    OOPS_VehicleManagement(Reads all the arguments) -> 
+    Operations.CreateVehicle(Directs to the appropriate Creation Method) ->
+    //reads from csv and gives list 
+    AddVehicleToDatabase.addVehicle(Takes a list and desired TableName and adds one by one to table) ->
+    VehicleDBMS.createVehicle(Takes Vehicle and add it to DBMS Table)
+
+2. Updation:
+    1. Command Line Manual Vehicle updation:
+    -create: -b for bike, -c for car and -a for auto followed by newAttibute newVal where OldAttribute OldVal from attributes
+
+    How does it work?
+    OOPS_VehicleManagement(Reads all the arguments) -> 
+    Operations.UpdateVehicle(Directs to the appropriate Updation Method) -> 
+    VehicleDBMS.updateVehicle(Update Vehicle in DBMS) and UpdateFile.updateinFile(Updates in .csv)
+
+    2. CSV Vehicle creation:
+    Simply enter: -update -x (Takes from x.csv)
+
+    How does it work?
+    OOPS_VehicleManagement(Reads all the arguments) -> 
+    Operations.UpdateVehicle(Directs to the appropriate Update Method) ->
+    //reads from csv and gives list of vehicle with matching values 
+    UpdateVehicleinDatabase.updateVehicle(Deletes the previous vehicles and adds the new one in DBMS)
+
+3. Deletion:
+    1. Command Line Manual Vehicle deletion:
+    -delete: -b for bike, -c for car and -a for auto followed by any of attributes with the value
+
+    How does it work?
+    OOPS_VehicleManagement(Reads all the arguments) -> 
+    Operations.DeleteVehicleFromDatabase(Directs to the appropriate Deletion Method) -> 
+    DeleteinFile.delete(Deletes from csv) and VehicleDBMS.deleteVehicle(Deletes from Database)
+
+    2. CSV Vehicle creation:
+    Simply enter: -delete -x (Takes from x.csv)
+
+    How does it work?
+    OOPS_VehicleManagement(Reads all the arguments) -> 
+    Operations.DeleteVehicleFromDatabase(Directs to the appropriate Deletion Method) ->
+    //reads from csv and gives set of vehicle with matching values 
+    DeletefromVehicle(Deletes both the engineNumber and also matching Vehicle from .csv) and VehicleDBMS.deleteVehicle(Deletes from DBMS)
+
+4. Read:
+    Ways:
+        1. -print -x (x = b/c/a/all) -> prints all the vehicles in respective x in a fancy form
+            Working: 
+                OOPS_VehicleManagement(Reads all the arguments) ->
+                VehicleParent.printListofVehicles(Takes List from VehicleDBMS.printVehicleContent() and fancy prints)
+
+        2. -print -stats -x (x = b/c/a/all)-> prints stats of vehicles in respective x in a fancy form.
+            Working:
+                OOPS_VehicleManagement(Reads all the arguments) -> 
+                Operations.PrintFinalAggregates(Takes list from VehicleDBMS.getVehicleStats(TableName) and fancy prints accordingly)
+
+5. Search:
+    1. -search -x attibute val (without order)
+    2. -search -x attibute val order (with order)
+        Working:
+            OOPS_VehicleManagement(Reads all the arguments) -> 
+            SearchVehicleinDatabase(Takes args and tablename) ->
+            VehicleDBMS.searchVehiclebyID(args, tablename)->
+            VehicleParent.printListofVehicles(Takes list from before and fancy prints)
+
+6. Sort:
+    -sort -x attibute o (where o -> i for increasing order and o -> d for decreasing order)
+    Working: 
+        OOPS_VehicleManagement(Reads all the arguments) -> 
+        Operations.SortVehicles(Directs list of vehicles from VehicleDBMS.sortVehiclebyAttribute() to fancy print VehicleParent.printListofVehicles())
+        
+
+
+
+                     
