@@ -132,12 +132,7 @@ public class Help {
 
 
     public static void printCredits() {
-        System.out.println("First Created as an OOPS Mini Project:\n\nContributors: \n");
-        System.out.println("Bargav Koduri");
-        System.out.println("Charan Devarkonda");
-        System.out.println("Sai Nithin Gubba");
-        System.out.println("Prem Rathan");
-        System.out.println("Rohith Boppey\n\n\n");
+        System.out.println("First Created as an OOPS Mini Project:\n");
     }
 
     

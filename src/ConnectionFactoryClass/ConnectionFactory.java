@@ -10,8 +10,8 @@ import java.util.Properties;
 
 public class ConnectionFactory {
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "RBmysql@20";
-    private static final String URL ="jdbc:mysql://localhost:3306/OOPS_project";
+    private static final String PASSWORD = "Wewin2021*";
+    private static final String URL ="jdbc:mysql://localhost:3306/mydb1";
 
     // This method gives a new connection between Java and MYSQL
     public static Connection giveNewConnection(){
