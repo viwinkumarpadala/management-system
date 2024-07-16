@@ -10,6 +10,13 @@ This Repository is a command line implementation of the Vehicle Management syste
   - JDBC
   - MYSQL
 
+- **Operations supported:**
+  - Create
+  - Read
+  - Update
+  - Delete
+  - Sort
+
 ## Contributors
 
 - Padala Viwin Kumar
